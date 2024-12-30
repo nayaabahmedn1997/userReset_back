@@ -111,7 +111,7 @@ const forgotPassword = async(req, res)=>{
     await user.save();
 
   // Send reset link via email
-  const resetLink = `http://localhost:3000/reset-password/${resetToken}`;
+  const resetLink = `https://resetgucipassword.netlify.app/reset-password/${resetToken}`;
    transporter.sendMail({
     from: "nayaabahmedn@gmail.com",
     to: email,
