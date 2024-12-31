@@ -119,7 +119,7 @@ const forgotPassword = async(req, res)=>{
     html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`,
   });
 
-  res.status(200).json({ message: "Reset link sent to your email" });
+  res.status(200).json({ message: "Reset link sent to your email", resetToken });
 
 
 }
