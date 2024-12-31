@@ -1,20 +1,20 @@
 const userModel = require("../models/userModel");
 const jwt =require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const nodemailer = require('nodemailer');
+//const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 
 dotenv.config();
-const transporter = nodemailer.createTransport({
-    service: "Gmail",
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.EMAIL, // Replace with your email
-      pass: process.env.PASSWORD, // Replace with your email password
-    },
-  });
+// const transporter = nodemailer.createTransport({
+//     service: "Gmail",
+//     host: "smtp.gmail.com",
+//     port: 465,
+//     secure: true,
+//     auth: {
+//       user: process.env.EMAIL, // Replace with your email
+//       pass: process.env.PASSWORD, // Replace with your email password
+//     },
+//   });
 
 const registerUser = async (req, res) =>{
 
@@ -110,14 +110,14 @@ const forgotPassword = async(req, res)=>{
     user.resetToken = resetToken;
     await user.save();
 
-  // Send reset link via email
-  const resetLink = `https://resetgucipassword.netlify.app/reset-password/${resetToken}`;
-   transporter.sendMail({
-    from: "nayaabahmedn@gmail.com",
-    to: email,
-    subject: "Password Reset",
-    html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`,
-  });
+//   // Send reset link via email
+//   const resetLink = `https://resetgucipassword.netlify.app/reset-password/${resetToken}`;
+//    transporter.sendMail({
+//     from: "nayaabahmedn@gmail.com",
+//     to: email,
+//     subject: "Password Reset",
+//     html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`,
+//   });
 
   res.status(200).json({ message: "Reset link sent to your email", resetToken });
 
